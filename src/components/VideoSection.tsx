@@ -6,6 +6,7 @@ import { Play } from 'lucide-react';
 export function VideoSection() {
   const { t, dir } = useLanguage();
   const [playingVideo, setPlayingVideo] = useState<'main' | 'secondary' | null>(null);
+  const base = import.meta.env.BASE_URL;
 
   return (
     <section className="bg-dark text-white py-24 relative overflow-hidden">
@@ -37,7 +38,7 @@ export function VideoSection() {
             {playingVideo !== 'main' ? (
               <>
                 <img 
-                  src="/facility.jpeg" 
+                  src={`${base}facility.jpeg`} 
                   alt="Industrial Video Thumbnail" 
                   className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500 cursor-pointer"
                   onClick={() => setPlayingVideo('main')}
@@ -56,7 +57,7 @@ export function VideoSection() {
                 className="absolute inset-0 w-full h-full object-cover bg-black"
                 controls
                 autoPlay
-                src="/industrial-video.mp4" 
+                src={`${base}industrial-video.mp4`} 
               />
             )}
           </motion.div>
@@ -72,7 +73,7 @@ export function VideoSection() {
               {playingVideo !== 'secondary' ? (
                 <>
                   <img 
-                    src="/rolls.jpeg" 
+                    src={`${base}rolls.jpeg`} 
                     alt="Corporate Video Thumbnail" 
                     className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500 cursor-pointer"
                     onClick={() => setPlayingVideo('secondary')}
@@ -91,7 +92,7 @@ export function VideoSection() {
                   className="absolute inset-0 w-full h-full object-cover bg-black"
                   controls
                   autoPlay
-                  src="/corporate-video.mp4" 
+                  src={`${base}corporate-video.mp4`} 
                 />
               )}
             </motion.div>

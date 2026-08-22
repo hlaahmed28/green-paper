@@ -37,7 +37,7 @@ export function Navbar() {
           
           <a href="#home" className="flex items-center block py-1">
             <img 
-              src="/logo.png" 
+              src={`${import.meta.env.BASE_URL}logo.png`} 
               alt="Green Paper" 
               className="h-16 md:h-20 w-auto object-contain mix-blend-multiply"
             />

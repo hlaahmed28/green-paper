@@ -13,7 +13,7 @@ export function Hero() {
         <div className={`absolute inset-0 bg-gradient-to-${dir === 'rtl' ? 'r' : 'l'} from-primary/95 to-dark/90 mix-blend-multiply z-10 bg-paper-texture`} />
         
         <img 
-          src="/hero-bg.png" 
+          src={`${import.meta.env.BASE_URL}hero-bg.png`} 
           alt="Paper Industry" 
           className="w-full h-full object-cover opacity-40"
         />
