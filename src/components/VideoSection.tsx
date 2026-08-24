@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 import { Play } from 'lucide-react';
@@ -6,7 +6,23 @@ import { Play } from 'lucide-react';
 export function VideoSection() {
   const { t, dir } = useLanguage();
   const [playingVideo, setPlayingVideo] = useState<'main' | 'secondary' | null>(null);
+  const mainVideoRef = useRef<HTMLVideoElement>(null);
+  const secondaryVideoRef = useRef<HTMLVideoElement>(null);
   const base = import.meta.env.BASE_URL;
+
+  const handlePlayMain = () => {
+    setPlayingVideo('main');
+    if (mainVideoRef.current) {
+      mainVideoRef.current.play();
+    }
+  };
+
+  const handlePlaySecondary = () => {
+    setPlayingVideo('secondary');
+    if (secondaryVideoRef.current) {
+      secondaryVideoRef.current.play();
+    }
+  };
 
   return (
     <section className="bg-dark text-white py-24 relative overflow-hidden">
@@ -35,32 +51,31 @@ export function VideoSection() {
             viewport={{ once: true }}
             className="lg:col-span-2 relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black group"
           >
-            {playingVideo !== 'main' ? (
-              <>
+            <video 
+              ref={mainVideoRef}
+              className="absolute inset-0 w-full h-full object-cover bg-black"
+              controls
+              playsInline
+              type="video/mp4"
+              src={`${base}industrial-video.mp4`} 
+            />
+            {playingVideo !== 'main' && (
+              <div className="absolute inset-0 z-10 bg-black">
                 <img 
                   src={`${base}facility.jpeg`} 
                   alt="Industrial Video Thumbnail" 
                   className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500 cursor-pointer"
-                  onClick={() => setPlayingVideo('main')}
+                  onClick={handlePlayMain}
                 />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <button 
-                    onClick={() => setPlayingVideo('main')}
+                    onClick={handlePlayMain}
                     className="pointer-events-auto w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-xl pl-1"
                   >
                     <Play size={36} fill="currentColor" />
                   </button>
                 </div>
-              </>
-            ) : (
-              <video 
-                className="absolute inset-0 w-full h-full object-cover bg-black"
-                controls
-                autoPlay
-                muted
-                playsInline
-                src={`${base}industrial-video.mp4`} 
-              />
+              </div>
             )}
           </motion.div>
 
@@ -72,32 +87,31 @@ export function VideoSection() {
               transition={{ delay: 0.2 }}
               className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black group"
             >
-              {playingVideo !== 'secondary' ? (
-                <>
+              <video 
+                ref={secondaryVideoRef}
+                className="absolute inset-0 w-full h-full object-cover bg-black"
+                controls
+                playsInline
+                type="video/mp4"
+                src={`${base}corporate-video.mp4`} 
+              />
+              {playingVideo !== 'secondary' && (
+                <div className="absolute inset-0 z-10 bg-black">
                   <img 
                     src={`${base}rolls.jpeg`} 
                     alt="Corporate Video Thumbnail" 
                     className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500 cursor-pointer"
-                    onClick={() => setPlayingVideo('secondary')}
+                    onClick={handlePlaySecondary}
                   />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <button 
-                      onClick={() => setPlayingVideo('secondary')}
+                      onClick={handlePlaySecondary}
                       className="pointer-events-auto w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-xl pl-1"
                     >
                       <Play size={28} fill="currentColor" />
                     </button>
                   </div>
-                </>
-              ) : (
-                <video 
-                  className="absolute inset-0 w-full h-full object-cover bg-black"
-                  controls
-                  autoPlay
-                  muted
-                  playsInline
-                  src={`${base}corporate-video.mp4`} 
-                />
+                </div>
               )}
             </motion.div>
 
