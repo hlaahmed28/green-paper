@@ -57,6 +57,8 @@ export function VideoSection() {
                 className="absolute inset-0 w-full h-full object-cover bg-black"
                 controls
                 autoPlay
+                muted
+                playsInline
                 src={`${base}industrial-video.mp4`} 
               />
             )}
@@ -92,6 +94,8 @@ export function VideoSection() {
                   className="absolute inset-0 w-full h-full object-cover bg-black"
                   controls
                   autoPlay
+                  muted
+                  playsInline
                   src={`${base}corporate-video.mp4`} 
                 />
               )}
