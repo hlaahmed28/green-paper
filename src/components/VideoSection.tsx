@@ -13,14 +13,14 @@ export function VideoSection() {
   const handlePlayMain = () => {
     setPlayingVideo('main');
     if (mainVideoRef.current) {
-      mainVideoRef.current.play();
+      mainVideoRef.current.play().catch(e => console.warn("Video playback failed:", e));
     }
   };
 
   const handlePlaySecondary = () => {
     setPlayingVideo('secondary');
     if (secondaryVideoRef.current) {
-      secondaryVideoRef.current.play();
+      secondaryVideoRef.current.play().catch(e => console.warn("Video playback failed:", e));
     }
   };
 
@@ -56,9 +56,10 @@ export function VideoSection() {
               className="absolute inset-0 w-full h-full object-cover bg-black"
               controls
               playsInline
-              type="video/mp4"
-              src={`${base}industrial-video.mp4`} 
-            />
+            >
+              <source src={`${base}industrial-video.mp4`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
             {playingVideo !== 'main' && (
               <div className="absolute inset-0 z-10 bg-black">
                 <img 
@@ -92,9 +93,10 @@ export function VideoSection() {
                 className="absolute inset-0 w-full h-full object-cover bg-black"
                 controls
                 playsInline
-                type="video/mp4"
-                src={`${base}corporate-video.mp4`} 
-              />
+              >
+                <source src={`${base}corporate-video.mp4`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
               {playingVideo !== 'secondary' && (
                 <div className="absolute inset-0 z-10 bg-black">
                   <img 
