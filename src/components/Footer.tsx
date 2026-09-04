@@ -53,8 +53,8 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="text-accent flex-shrink-0 mt-1" size={20} />
                 <div className="flex flex-col">
-                  <span className="mb-1 font-semibold">رئيس مجلس الإدارة: علي فضالي</span>
-                  <span dir="ltr" className={`text-${dir === 'rtl' ? 'right' : 'left'}`}>01118909022</span>
+                  <span className="mb-1 font-semibold">{t.footer.chairman}</span>
+                  <span dir="ltr" className={`text-${dir === 'rtl' ? 'right' : 'left'}`}>{t.footer.chairman_phone}</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
