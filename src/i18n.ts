@@ -89,7 +89,7 @@ export const translations = {
       quick_links: 'روابط سريعة',
       contact_us: 'تواصل معنا',
       location: 'الغربية - مركز طنطا - ميت حبيش البحرية',
-      chairman: 'رئيس مجلس الإدارة: ا/علي فضالي',
+      chairman: 'رئيس مجلس الإدارة: أ/علي فضالي',
       chairman_phone: '01118909022',
       sales_manager: 'مدير المبيعات: أ / هانى',
       phone1: '01026090082',
